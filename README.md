@@ -54,3 +54,10 @@ Samsung does not publish this WebSocket remote interface as a stable general-pur
 - The Play/Pause button sends `KEY_PLAY_PAUSE`, which isn't part of Samsung's documented key set (only separate `KEY_PLAY`/`KEY_PAUSE` exist) — on real hardware it's currently a no-op. `OK` (`KEY_ENTER`) happens to pause video in apps like Netflix because those apps treat a select press during playback as toggle-pause, not because it's a dedicated pause command.
 - The TV's IP-change self-heal only works once discovery has actually run and learned the TV's id — a direct auto-connect that succeeds at the saved IP never triggers discovery, so a TV that's never had its IP change since first pairing won't be "known" for self-heal purposes until discovery runs at least once (e.g. after the first time it does become unreachable).
 - To review or revoke this app's access on the TV itself: **Settings → General → External Device Manager → Device Connection Manager → Device List**.
+
+## License
+
+This project is licensed under the MIT License.
+
+Copyright © 2026 Satish Kunapuli.
+See the [LICENSE](LICENSE) file for details.
