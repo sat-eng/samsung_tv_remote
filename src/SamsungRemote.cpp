@@ -17,7 +17,11 @@ SamsungRemote::SamsungRemote(QObject *parent) : QObject(parent) {
         // Samsung TVs normally use a self-signed certificate on port 8002.
         socket_.ignoreSslErrors();
     });
+#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
     connect(&socket_, &QWebSocket::errorOccurred, this, [this](QAbstractSocket::SocketError) {
+#else
+    connect(&socket_, QOverload<QAbstractSocket::SocketError>::of(&QWebSocket::error), this, [this](QAbstractSocket::SocketError) {
+#endif
         if (!triedInsecure_) {
             triedInsecure_ = true;
             emit statusChanged(QStringLiteral("Secure connection failed; trying port 8001…"));
